@@ -1,0 +1,18 @@
+pipeline:
+  processors:
+  - bloblang: |
+      root = this.format_sereal(version: 3, perl_compat: false, struct_as_map: true, compression: "snappy")
+  - bloblang: |
+      root = content().parse_sereal()
+
+tests:
+  - name: echo
+    environment: {}
+    target_processors: /pipeline/processors
+    input_batch:
+      - json_content: 
+          foo: foo value
+          bar: [ element1, 10 ]
+    output_batches:
+      - - content_equals: '{"bar":["element1",10],"foo":"foo value"}'
+
