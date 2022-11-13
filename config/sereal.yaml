@@ -6,3 +6,16 @@ metrics:
 
 logger:
   format: json
+
+input:
+  http_server:
+    path: /encode
+    ws_path: /encode/ws
+
+pipeline:
+  processors:
+  - mapping: |
+      root = this.format_sereal(version: 3, perl_compat: false, struct_as_map: true, compression: "snappy")
+
+output:
+  sync_response: {}

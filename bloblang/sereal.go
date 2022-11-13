@@ -77,7 +77,7 @@ func init() {
 						encoder.Compression = sereal.SnappyCompressor{Incremental: true}
 					case "zlib":
 						encoder.Compression = sereal.ZlibCompressor{}
-					case "zstd":
+					case "zstd": // need cgo
 						encoder.Compression = sereal.ZstdCompressor{}
 					}
 					// TODO add struct matching for more compression option
@@ -97,7 +97,7 @@ func init() {
 				return nil, err
 			}
 			if structOpt != nil {
-				encoder.PerlCompat = *structOpt
+				encoder.StructAsMap = *structOpt
 			}
 
 			return func(v any) (any, error) {

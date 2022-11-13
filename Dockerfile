@@ -12,6 +12,7 @@ FROM jeffail/benthos
 
 LABEL maintainer="Antoine Girard <antoine.girard@sapk.fr>"
 
-# replace original benthos
+# replace original benthos binary and configuration
+COPY ./config/sereal.yaml /benthos.yaml
 COPY --from=build /build/benthos .
 
