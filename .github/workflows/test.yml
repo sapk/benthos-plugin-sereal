@@ -2,6 +2,9 @@ name: Testing
 
 on: [push]
 
+permissions:
+  contents: read
+
 jobs:
   build:
 
@@ -14,8 +17,10 @@ jobs:
         with:
           go-version-file: 'go.mod'
 
-#      - name: Lint
-#        uses: golangci/golangci-lint-action@v3
+      - name: Lint
+        uses: golangci/golangci-lint-action@v3
+        with:
+          args: --timeout=5m
 
       - name: Test
         run: go test -v ./...
