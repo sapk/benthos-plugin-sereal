@@ -3,10 +3,12 @@ package main
 import (
 	"context"
 
-	"github.com/benthosdev/benthos/v4/public/service"
+	"github.com/redpanda-data/benthos/v4/public/service"
 
-	// Import all standard Benthos components
-	_ "github.com/benthosdev/benthos/v4/public/components/all"
+	// Import all plugins defined within the repo.
+	_ "github.com/redpanda-data/benthos/v4/public/components/io"
+	_ "github.com/redpanda-data/benthos/v4/public/components/pure"
+	_ "github.com/redpanda-data/benthos/v4/public/components/pure/extended"
 
 	// Add your plugin packages here
 	_ "github.com/sapk/benthos-plugin-sereal/bloblang"

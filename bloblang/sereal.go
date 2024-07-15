@@ -5,7 +5,7 @@ import (
 	"fmt"
 
 	"github.com/Weborama/Sereal/Go/sereal"
-	"github.com/benthosdev/benthos/v4/public/bloblang"
+	"github.com/redpanda-data/benthos/v4/public/bloblang"
 )
 
 var ErrInvalidSerealVersion = errors.New("invalid sereal version")
